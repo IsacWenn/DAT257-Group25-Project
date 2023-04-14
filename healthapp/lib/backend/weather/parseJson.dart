@@ -13,6 +13,7 @@ class JsonParser{
     initHwc(weatherJson);
   }
 
+  // adds the different weather codes to a map which we can use to extract an enum
   void initWeatherTypes(){
     weatherTypeMap[0] = WeatherType.clear; // clear sky
     weatherTypeMap[1] = WeatherType.halfCloudy; // mainly clear
@@ -41,6 +42,8 @@ class JsonParser{
     weatherTypeMap[86] = WeatherType.snowing; // heavy snow showers
   }
 
+  // uses string manipulation and Json parsing to get an object that contains the relevant
+  // parts of the result of our api request concerning the weather
   void initHwc(String weatherJson){
       List<String> hourlyList = weatherJson.split("hourly");
       String hourlyString = hourlyList[2].substring(2, hourlyList[2].length - 1);
@@ -48,6 +51,8 @@ class JsonParser{
       this.hwc = HourlyWeatherCollection.fromJson(valuemap);
   }
 
+  // turns our one large hourly weather object into a list of weather objects each representing
+  // one hour that can be used by the front end
   List<WeatherInformation> jsonDataConverter(){
     List<WeatherInformation> weatherInformation = [];
 
@@ -62,6 +67,8 @@ class JsonParser{
   }
 }
 
+// A class contaiing the results of our api request over the entire week representing each attribute
+// as a list
 class HourlyWeatherCollection {
   HourlyWeatherCollection({required this.time, required this.temperature_2m, required this.precipitation, 
   required this.snowfall, required this.snow_depth, required this.weathercode, required this.cloudcover,
@@ -76,6 +83,7 @@ class HourlyWeatherCollection {
   List<double> windspeed_10m;
   List<int> winddirection_10m;
 
+  // factory method that allows us to parse json into object of this type
   factory HourlyWeatherCollection.fromJson(Map <String, dynamic> data){
     final time = data['time'].cast<String>() as List<String>; 
     final temperature_2m = data['temperature_2m'].cast<double>() as List<double>; 

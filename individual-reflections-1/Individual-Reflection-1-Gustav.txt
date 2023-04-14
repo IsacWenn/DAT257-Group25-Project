@@ -1,0 +1,13 @@
+﻿Individual Reflection week 1:
+
+
+1. For next week I would like to be better at continuously communicating 
+between the different programing pairs to avoid confusion when it comes 
+time to put our work together. I also hope to get more comfortable with the best 
+practices for flutter since it is a new language.
+
+2. My contributions were related to the discussion and 
+then mainly towards the projects backend development. I worked to 
+integrate the weather api, handle the json it returned and then parse it into a 
+format that we could deliver to the front end for use. Next sprint I hope to do a 
+better job at documenting my work.
